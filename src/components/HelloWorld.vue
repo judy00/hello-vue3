@@ -1,32 +1,17 @@
+/* eslint-disable vue/no-deprecated-filter */
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <!-- <p>1 日幣 = 0.278 台幣</p>
+    <div>台幣 <input type="text" v-model="twd" @input="tw2jp"></div>
+    <div>日幣 <input type="text" v-model="jpy" @input="jp2tw"></div> -->
+
+    <p>1 日幣 = 0.278 台幣</p>
+    <div>台幣 <input type="text" v-model="twd"></div>
+    <div>日幣 <input type="text" v-model="jpy"></div>
+    <div>美金 <input type="text" v-model="usd"></div>
+
+    <!-- <p>filter: {{ price | toUpperCase }}</p> -->
+    <!-- <p>method: {{ toUpperCase('asdfg') }}</p> -->
   </div>
 </template>
 
@@ -35,6 +20,79 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  filters: {
+    toUpperCase(value) {
+      return value.toUpperCase()
+    }
+  },
+  data() {
+    return {
+      name: 'sam',
+      price: 100,
+      count: 5,
+
+      twd: 0.278,
+      // jpy: 1,
+    }
+  },
+  mounted() {
+    // this.totalMethod()
+    // this.total2()
+  },
+  created: ()=>{
+    console.log(this)
+  },
+  computed: {
+    totalComputed() {
+      console.log('這是 totalComputed')
+      return this.price * this.count
+    },
+    // point 5, computed get set
+    jpy: {
+      get() {
+        return Number.parseFloat(Number(this.twd) / 0.278).toFixed(3)
+      },
+      set(val) {
+        this.twd = Number.parseFloat(Number(val) * 0.278).toFixed(3)
+      }
+    },
+
+    usd: {
+      get() {
+        // return Number.parseFloat(Number(this.twd) / 28.540).toFixed(3)
+        return this.twd
+      },
+      set(newValue, oldValue, test) {
+        console.log('newValue :>> ', newValue);
+        console.log('oldValue :>> ', oldValue);
+        console.log('test :>> ', test);
+        this.twd = Number.parseFloat(Number(newValue) * 28.540).toFixed(3)
+      }
+    }
+    // usd: {
+    //   get() {
+    //     return Number.parseFloat(Number(this.twd) / 28.540).toFixed(3)
+    //   },
+    //   set(val) {
+    //     this.twd = Number.parseFloat(Number(val) * 28.540).toFixed(3)
+    //   }
+    // }
+  },
+  methods: {
+
+    // tw2jp() {
+    //   console.log('tw2jp :>> ');
+    //   this.jpy = Number.parseFloat(Number(this.twd) / 0.278).toFixed(3)
+    // },
+    // jp2tw() {
+    //   console.log('jp2tw :>> ');
+    //   this.twd = Number.parseFloat(Number(this.jpy) * 0.278).toFixed(3)
+    // },
+
+    // toUpperCase(value) {
+    //   return value.toUpperCase()
+    // }
   }
 }
 </script>

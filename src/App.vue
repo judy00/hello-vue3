@@ -1,15 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <div>
+    <!-- <Conditions></Conditions> -->
+    <DynamicComp></DynamicComp>
+    <AsyncImport></AsyncImport>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+// import Conditions from './components/Conditions'
+import DynamicComp from './components/DynamicComp'
+import AsyncImport from './components/AsyncImport'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld,
+    // Conditions,
+    DynamicComp,
+    AsyncImport
   }
 }
 </script>
@@ -19,7 +30,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
