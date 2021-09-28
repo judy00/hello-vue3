@@ -1,19 +1,19 @@
 <template>
   <div class="comp-tab">
-    Tab B
+    Tab C
     <input v-model="title">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TabB',
+  name: 'TabCName',
   props: {
     msg: String
   },
   data() {
     return {
-      title: '我是 TAB B'
+      title: '我是 TAB C'
     }
   },
   // 透過 this.$options.name 可以取得子元件的 name 屬性

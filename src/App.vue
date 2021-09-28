@@ -11,8 +11,8 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import Conditions from './components/Conditions'
-import DynamicComp from './components/DynamicComp'
-import AsyncImport from './components/AsyncImport'
+import DynamicComp from './components/dynamicComp/DynamicComp'
+// import AsyncImport from './components/dynamicComp/AsyncImport'
 
 export default {
   name: 'App',
@@ -20,7 +20,7 @@ export default {
     // HelloWorld,
     // Conditions,
     DynamicComp,
-    AsyncImport
+    // AsyncImport
   }
 }
 </script>
